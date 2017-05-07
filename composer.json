@@ -1,0 +1,42 @@
+{
+  "name": "bayareawebpro/illumine-framework",
+  "description": "The Illumine Plugin Framework Package",
+  "license": "MIT",
+  "homepage": "https://www.bayareawebpro.com",
+  "support": {
+    "issues": "https://github.com/bayareawebpro/illumine-framework/issues",
+    "source": "https://github.com/bayareawebpro/illumine-framework/"
+  },
+  "authors": [
+    {
+      "name": "Dan Alvidrez",
+      "email": "dan@bayareawebpro.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.4",
+    "illuminate/config": "5.4.*",
+    "illuminate/container": "5.4.*",
+    "illuminate/filesystem": "5.4.*",
+    "illuminate/database": "5.4.*",
+    "illuminate/events": "5.4.*",
+    "illuminate/http": "5.4.*",
+    "illuminate/routing": "5.4.*",
+    "illuminate/view": "5.4.*",
+    "illuminate/cookie": "5.4.*",
+    "illuminate/pagination": "5.4.*",
+    "illuminate/cache": "5.4.*",
+    "illuminate/validation": "5.4.*",
+    "illuminate/encryption": "5.4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Illumine\\Framework\\": "src"
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true
+  },
+  "minimum-stability": "stable"
+}
