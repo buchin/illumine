@@ -48,6 +48,7 @@ class Assembler
         $this->bindConfig();
         $this->bindDatabase();
         $this->bindFileSystem();
+        $this->setInstance();
         $this->hookSchema();
         $this->bindEvents();
         $this->bindRequest();
@@ -388,15 +389,7 @@ class Assembler
      */
     public function bootInstance()
     {
-        /**
-         * Add illumine() global function
-         */
-        if (!function_exists('illumine')) {
-            function illumine($namespace)
-            {
-                return Assembler::getInstance($namespace);
-            }
-        }
+
         add_action('widgets_init', function () {
             $this->bindCache();
             $this->bindCookieJar();
