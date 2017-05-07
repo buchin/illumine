@@ -18,12 +18,12 @@ use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
 use Illuminate\Validation\ValidationServiceProvider;
 use Illuminate\View\ViewServiceProvider;
+
+//IllumineFramework
 use Illumine\Framework\Factories\AdminFactory;
 use Illumine\Framework\Factories\ShortcodeFactory;
 use Illumine\Framework\Factories\WidgetFactory;
 use Illumine\Framework\Traits\AccessibleTrait;
-
-//IllumineFramework
 
 class Assembler
 {
@@ -53,13 +53,7 @@ class Assembler
         $this->bindRequest();
         $this->bindResponse();
         $this->bindViews();
-        $this->bindCache();
-        $this->bindCookieJar();
-        $this->bindSession();
-        $this->bindValidator();
-        $this->bindProviders();
-        $this->bindRouter();
-        $this->loadRoutes();
+
     }
 
     /**
@@ -397,6 +391,13 @@ class Assembler
     {
 
         add_action('widgets_init', function () {
+            $this->bindCache();
+            $this->bindCookieJar();
+            $this->bindSession();
+            $this->bindValidator();
+            $this->bindProviders();
+            $this->bindRouter();
+            $this->loadRoutes();
             $this->bindWpSupport();
         });
         add_action('init', function () {
@@ -492,13 +493,13 @@ class Assembler
                     $this->plugin['config']->get('namespace'), //$menu_title
                     'manage_options', //$capability
                     strtolower($this->plugin['config']->get('namespace')), //$menu_slug
-                    'IllumineFramework\Controllers\DevController'
+                    'Illumine\Framework\Controllers\DevController'
                 );
 
                 $this->plugin['admin']->addWidget(
                     str_slug($this->plugin['config']->get('namespace')),
                     $this->plugin['config']->get('namespace'),
-                    'IllumineFramework\Controllers\WidgetController'
+                    'Illumine\Framework\Controllers\WidgetController'
                 );
             }
 
