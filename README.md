@@ -1,4 +1,4 @@
 # Illumine Framework
-Laravel Based WordPress Plugin Framework
+(Core Framework Classes)
 
-[Documentation](https://github.com/bayareabuilder/illumine-framework/blob/master/_docs/illumine-framework.md)
+For Use With: [Illumine Framework Starter Plugin](https://github.com/bayareawebpro/illumine-framework-starter/)
