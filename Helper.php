@@ -2,7 +2,7 @@
 
 use Illumine\Framework\Traits\AccessibleTrait;
 use Illumine\Framework\Traits\ReflectibleTrait;
-
+use Illumine\Framework\Assembler;
 abstract class Helper
 {
     use ReflectibleTrait;
@@ -12,7 +12,7 @@ abstract class Helper
 
     private function __construct()
     {
-        $this->plugin = illumine($this->reflect()->getNamespaceName());
+        $this->plugin = Assembler::getInstance($this->reflect()->getNamespaceName());
     }
 
     /**
