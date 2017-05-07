@@ -31,7 +31,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Illumine\\Framework\\": "src"
+      "Illumine\\Framework\\": "src\\Illumine\\Framework\\"
     }
   },
   "config": {
