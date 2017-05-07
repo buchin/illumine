@@ -14,44 +14,9 @@
             </div>
             <div class="inside illumine-inside">
 
-                <p>Illumine Framework provides an architecture that allows rapid development of Wordpress plugins where
-                    speed and dexterity is preferred over native WP methods. This codebase was inspired by Laravel and
-                    tries to take full advantage of it's core libraries while remaining component driven. The following
-                    guide outlines the architecture of the framework so you can understand the depth of it's
-                    capabilities. I hope you enjoy this tool. Please help by contributing or reporting problems
-                    encountered to the framework's GitHub repository.</p>
-
-                <p>Developer: <strong>Dan Alvidrez</strong></p>
-                <!-- SECTION DIVIDER -->
-                <hr/>
-                <!-- SECTION DIVIDER -->
-
-                <h4><em>Special thanks to:</em></h4>
-                <ul class="specialThanks">
-                    <li>
-                        <a href="http://laravel.com" target="_blank">
-                            <strong>Taylor Otwell</strong> (Laravel)
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://laracasts.com" target="_blank">
-                            <strong>Jeffery Way</strong>, (Laracasts)
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/mattstauffer" target="_blank">
-                            <strong>Matt Stauffer</strong>, (GitHub)
-                        </a>
-                    </li>
-                    <li>
-                        <a href="http://getherbert.com" target="_blank">
-                            <strong>Jason Agnew</strong>, (GetHerbert)
-                        </a>
-                    </li>
-                </ul>
 
                 <!-- SECTION DIVIDER -->
-                <hr/>
+
                 <a class="illumine_anchor" id="illumine_containers"></a>
                 <h1>Plugin Containers</h1>
                 <!-- SECTION DIVIDER -->
@@ -92,18 +57,6 @@
                             $myPlugin = Helper::plugin();
                         </code>
                     </li>
-                    <li>
-                        <p>
-                            <strong>Framework Class Method:</strong>
-                            <br/>
-                            <em>For interacting with other Illumine framework based plugins:</em>
-                        </p>
-                        <code>
-                            use \IllumineFramework\IlluminePlugin;
-                            <br/><br/>
-                            $otherPlugin = IlluminePlugin::getInstance('MyOtherPluginNamespace');
-                        </code>
-                    </li>
                 </ol>
 
 
@@ -116,9 +69,9 @@
                 <p>Custom Classes can be bound to the plugin container just as you would do in Laravel.</p>
                 <code>
 
-                    $config = $plugin->container['config'];
+                    $config = $framework->config();
                     <br/><br/>
-                    $plugin->container->bind('fooBar', function() use ($config){
+                    $framework->plugin->bind('fooBar', function() use ($config){
                     <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return new MyClass($config->get('api_key'),
                     $config->get('api_token'));
                     <br/>});

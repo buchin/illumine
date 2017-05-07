@@ -368,7 +368,6 @@ class Assembler
                 }
             }
 
-
         }
     }
 
@@ -389,7 +388,15 @@ class Assembler
      */
     public function bootInstance()
     {
-
+        /**
+         * Add illumine() global function
+         */
+        if (!function_exists('illumine')) {
+            function illumine($namespace)
+            {
+                return Assembler::getInstance($namespace);
+            }
+        }
         add_action('widgets_init', function () {
             $this->bindCache();
             $this->bindCookieJar();
@@ -399,15 +406,15 @@ class Assembler
             $this->bindRouter();
             $this->loadRoutes();
             $this->bindWpSupport();
-        });
-        add_action('init', function () {
-
             $this->setInstance();
             $this->developerMode();
+        });
 
-            /**
-             * Route Requests on Frontend
-             */
+        /**
+         * Route Requests on Frontend
+         */
+        add_action('init', function () {
+
             if (!is_admin()) {
                 if ($this->plugin['config']->get('routes.loading') == 'eager') {
                     $this->routeRequest();
@@ -650,12 +657,3 @@ class Assembler
 
 }
 
-/**
- * Add illumine() global function
- */
-if (!function_exists('illumine')) {
-    function illumine($namespace)
-    {
-        return Assembler::getInstance($namespace);
-    }
-}

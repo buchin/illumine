@@ -10,11 +10,19 @@ abstract class Helper
 
     protected $this, $namespace, $plugin;
 
-
     private function __construct()
     {
         $this->plugin = illumine($this->reflect()->getNamespaceName());
+    }
 
+    /**
+     * Get Plugin
+     * @return
+     */
+    public static function plugin()
+    {
+        $helper = new static();
+        return $helper->plugin;
     }
 
     /**
