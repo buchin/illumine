@@ -41,6 +41,8 @@ class ShortcodeFactory
                 ->needs('$attributes')
                 ->give($attributes);
 
+
+
             ob_start();
 
             $this->plugin->make($controllerClass);

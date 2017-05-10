@@ -495,12 +495,6 @@ class Assembler
                     strtolower($this->plugin['config']->get('namespace')), //$menu_slug
                     'Illumine\Framework\Controllers\DevController'
                 );
-
-//                $this->plugin['admin']->addWidget(
-//                    str_slug($this->plugin['config']->get('namespace')),
-//                    $this->plugin['config']->get('namespace'),
-//                    'Illumine\Framework\Controllers\WidgetController'
-//                );
             }
 
             $this->plugin['admin']->addBarNode(

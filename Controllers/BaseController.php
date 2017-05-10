@@ -1,16 +1,19 @@
 <?php namespace Illumine\Framework\Controllers;
 
-use Illuminate\Routing\Controller;
-use Illumine\Framework\Assembler;
+//Illumine
 use Illumine\Framework\Traits\AccessibleTrait;
 use Illumine\Framework\Traits\ReflectibleTrait;
+
+//Illuminate
+use Illuminate\Routing\Controller;
+use Illumine\Framework\Assembler;
+
 
 abstract class BaseController extends Controller
 {
 
     use ReflectibleTrait;
     use AccessibleTrait;
-
     protected
         $this,
         $plugin,

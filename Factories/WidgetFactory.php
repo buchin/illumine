@@ -20,24 +20,15 @@ class WidgetFactory
     /**
      * AddWidget
      * Add Plugin Container
-     * @param $name , $title, $attributes, $class
+     * @param $name
+     * @param $title
+     * @param $properties
+     * @param $controllerClass
      */
-    public function add($name, $title, $attributes, $class)
+    public function add($name, $title, $properties, $controllerClass)
     {
 
-
-        $widget = new Widget($name, $title, $attributes);
-
-        $widget->widget = function ($args, $instance) {
-
-        };
-        $widget->form = function ($instance) {
-
-        };
-        $widget->update = function ($new_instance, $old_instance) {
-
-        };
-        register_widget($widget);
+        register_widget(new Widget($name, $title, $properties, $this->plugin, $controllerClass));
     }
 }
 

@@ -12,7 +12,13 @@ trait AccessibleTrait
     {
         return $this->plugin['encrypter'];
     }
-
+    /**
+     * Access ViewFactory
+     * @return \Illuminate\View\Factory
+     */
+    public function viewFactory(){
+        return $this->plugin['view'];
+    }
     /**
      * Access View
      * @return mixed
