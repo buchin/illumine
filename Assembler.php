@@ -300,10 +300,9 @@ class Assembler
      */
     private function bindExceptions()
     {
-        $this->plugin->singleton(
-            \Illuminate\Contracts\Debug\ExceptionHandler::class,
-            \Illumine\Framework\Support\ExceptionHandler::class
-        );
+        $this->plugin->bind('exception', function(){
+            return new \Illumine\Framework\Support\ExceptionHandler();
+        });
     }
 
 
