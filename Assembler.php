@@ -46,6 +46,7 @@ class Assembler
 
         $this->setFacadeApp();
         $this->bindConfig();
+        $this->bindExceptions();
         $this->bindDatabase();
         $this->bindFileSystem();
         $this->setInstance();
@@ -271,7 +272,6 @@ class Assembler
     private function bindProviders()
     {
 
-
         //Count Providers Array in Config
         if (count($this->plugin['config']->get('providers')) > 0) {
 
@@ -293,6 +293,19 @@ class Assembler
             }
         }
     }
+
+
+    /**
+     * Bind Exceptions Class to Container
+     */
+    private function bindExceptions()
+    {
+        $this->plugin->singleton(
+            \Illuminate\Contracts\Debug\ExceptionHandler::class,
+            \Illumine\Framework\Support\ExceptionHandler::class
+        );
+    }
+
 
     /**
      * Bind Router Class to Container
