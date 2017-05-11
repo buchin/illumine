@@ -28,7 +28,8 @@
     "illuminate/cache": "5.4.*",
     "illuminate/validation": "5.4.*",
     "illuminate/encryption": "5.4.*",
-    "illuminate/queue": "5.4.*"
+    "illuminate/queue": "5.4.*",
+    "illuminate/bus": "5.4.*"
   },
   "autoload": {
     "psr-4": {

@@ -18,7 +18,7 @@ class ExceptionHandler implements ExceptionHandlerContract {
      * @return void
      */
     public function report( Exception $e ) {
-
+        echo $e->getMessage();
     }
 
 

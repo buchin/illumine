@@ -82,6 +82,7 @@ class Assembler
         //Set Config Paths
         $this->plugin['config']->set('base', trailingslashit(plugin_dir_path($this->pluginDirectory)));
         $this->plugin['config']->set('public', trailingslashit(plugin_dir_url($this->pluginDirectory)));
+
     }
 
     /**
@@ -300,9 +301,7 @@ class Assembler
      */
     private function bindExceptions()
     {
-        $this->plugin->bind('exception', function(){
-            return new \Illumine\Framework\Support\ExceptionHandler();
-        });
+        $this->plugin->bind('Illuminate\Contracts\Debug\ExceptionHandler', \Illumine\Framework\Support\ExceptionHandler::class);
     }
 
 
