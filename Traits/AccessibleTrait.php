@@ -12,6 +12,18 @@ trait AccessibleTrait
     {
         return $this->plugin['encrypter'];
     }
+
+
+    /**
+     * Access Queue
+     * @return \Illuminate\Queue\QueueManager
+     */
+    public function queue()
+    {
+        return $this->plugin['queue'];
+    }
+
+
     /**
      * Access ViewFactory
      * @return \Illuminate\View\Factory

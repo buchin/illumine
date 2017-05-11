@@ -1,5 +1,4 @@
 <?php namespace Illumine\Framework;
-
 use Illumine\Framework\Traits\AccessibleTrait;
 use Illumine\Framework\Traits\ReflectibleTrait;
 use Illumine\Framework\Assembler;
@@ -25,6 +24,16 @@ abstract class Helper
         return $helper->plugin;
     }
 
+
+    /**
+     * Get Queue
+     * @return
+     */
+    public static function queue()
+    {
+        $helper = new static();
+        return $helper->queue();
+    }
     /**
      * Get Session Token
      * @return string

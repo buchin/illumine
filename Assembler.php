@@ -18,6 +18,8 @@ use Illuminate\Translation\FileLoader;
 use Illuminate\Translation\Translator;
 use Illuminate\Validation\ValidationServiceProvider;
 use Illuminate\View\ViewServiceProvider;
+use Illuminate\Queue\QueueServiceProvider;
+use Illuminate\Bus\BusServiceProvider;
 
 //IllumineFramework
 use Illumine\Framework\Factories\AdminFactory;
@@ -49,6 +51,7 @@ class Assembler
         $this->bindExceptions();
         $this->bindDatabase();
         $this->bindFileSystem();
+        $this->bindQueue();
         $this->setInstance();
         $this->hookSchema();
         $this->bindEvents();
@@ -302,6 +305,17 @@ class Assembler
     private function bindExceptions()
     {
         $this->plugin->bind('Illuminate\Contracts\Debug\ExceptionHandler', \Illumine\Framework\Support\ExceptionHandler::class);
+    }
+
+    /**
+     * Bind Exceptions Class to Container
+     */
+    private function bindQueue()
+    {
+        if ($this->plugin['config']->get('queue.enabled')) {
+            with(new QueueServiceProvider($this->plugin))->register();
+            with(new BusServiceProvider($this->plugin))->register();
+        }
     }
 
 
