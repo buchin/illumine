@@ -176,8 +176,48 @@ class Assembler
      */
     private function bindViews()
     {
-        //IllumineFramework
-        with(new ViewServiceProvider($this->plugin))->register();
+        // Register the view engine resolver
+        $this->plugin->singleton('view.engine.resolver', function ($app) {
+            $resolver = new \Illuminate\View\Engines\EngineResolver();
+
+            // Register the blade engine
+            $resolver->register('blade', function () use ($app) {
+                return new \Illuminate\View\Engines\CompilerEngine($app['blade.compiler']);
+            });
+
+            // Register the php engine
+            $resolver->register('php', function () {
+                return new \Illuminate\View\Engines\PhpEngine();
+            });
+
+            return $resolver;
+        });
+
+        // Register the blade compiler
+        $this->plugin->singleton('blade.compiler', function ($app) {
+            return new \Illuminate\View\Compilers\BladeCompiler(
+                $app['files'],
+                $app['config']['view.compiled']
+            );
+        });
+
+        // Register the view finder
+        $this->plugin->singleton('view.finder', function ($app) {
+            return new \Illuminate\View\FileViewFinder($app['files'], $app['config']['view.paths']);
+        });
+
+        // Register the view factory
+        $this->plugin->singleton('view', function ($app) {
+            $factory = new \Illuminate\View\Factory(
+                $app['view.engine.resolver'],
+                $app['view.finder'],
+                $app['events']
+            );
+
+            $factory->setContainer($app);
+
+            return $factory;
+        });
     }
 
     /**
