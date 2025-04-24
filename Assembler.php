@@ -121,6 +121,11 @@ class Assembler
             $this->plugin->bind('db', function () use ($database) {
                 return $database->getDatabaseManager();
             }, true);
+
+            // Bind db.schema to the schema builder
+            $this->plugin->bind('db.schema', function ($app) use ($database) {
+                return $database->getConnection()->getSchemaBuilder();
+            }, true);
         }
     }
 
